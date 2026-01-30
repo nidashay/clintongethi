@@ -9,7 +9,7 @@
 
 I'm a passionate young developer who loves building things from scratch and understanding how computers *really* work.
 
-* 🎓 High school student
+* 🎓 College student
 * 💻 Programming on a **low-end PC** (and proud of it)
 * 🔧 Learning by doing, breaking, fixing, and rebuilding
 
