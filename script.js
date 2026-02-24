@@ -1,44 +1,75 @@
-const canvas = document.getElementById("bg");
+// Typing effect
+const text = [
+    "Programmer",
+    "C++ Developer",
+    "Python Engineer",
+    "Founder of GumBee Tech"
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+const typingElement = document.getElementById("typing");
+
+function type() {
+    if (i < text.length) {
+        if (!isDeleting && j <= text[i].length) {
+            current = text[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+            current = text[i].substring(0, j--);
+        }
+
+        typingElement.textContent = current;
+
+        if (j === text[i].length) isDeleting = true;
+        if (j === 0 && isDeleting) {
+            isDeleting = false;
+            i = (i + 1) % text.length;
+        }
+    }
+    setTimeout(type, isDeleting ? 40 : 80);
+}
+type();
+
+
+// Matrix rain
+const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particles = [];
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
 
-for (let i = 0; i < 80; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speedY: Math.random() * 1 + 0.2
-    });
-}
+const drops = [];
+for (let x = 0; x < columns; x++) drops[x] = 1;
 
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#00ff9c";
+    ctx.font = fontSize + "px monospace";
 
-    particles.forEach(p => {
-        p.y += p.speedY;
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (p.y > canvas.height) {
-            p.y = 0;
-            p.x = Math.random() * canvas.width;
-        }
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-    });
-
-    requestAnimationFrame(animate);
+        drops[i]++;
+    }
 }
 
-animate();
+setInterval(drawMatrix, 35);
 
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+// Cursor glow
+const glow = document.querySelector(".cursor-glow");
+document.addEventListener("mousemove", e => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
 });
