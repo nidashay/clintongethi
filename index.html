@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinton Gethi | Portfolio</title>
-
-    <!-- CSS (same folder) -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinton Gethi | Hacker Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Background animation -->
-    <canvas id="bg"></canvas>
+<canvas id="matrix"></canvas>
 
-    <header>
-        <h1 class="glow">Clinton Gethi</h1>
-        <p class="subtitle">Programmer • Creator • Founder of GumBee Tech</p>
-    </header>
+<div class="cursor-glow"></div>
 
-    <section class="card">
-        <h2>About Me</h2>
-        <p>
-            I'm a self-taught developer from Kenya who builds software with limited resources.
-            I focus on Python, C++, low-level problem solving, and creative tech projects.
-        </p>
-    </section>
+<header>
+    <h1 class="glow">Clinton Gethi</h1>
+    <p class="typing" id="typing"></p>
+</header>
 
-    <section class="card">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>C++</li>
-            <li>Java</li>
-            <li>Git & GitHub</li>
-            <li>Linux Basics</li>
-        </ul>
-    </section>
+<section class="card">
+    <h2>About Me</h2>
+    <p>
+        Self-taught developer from Kenya building powerful software with limited resources.
+        I specialize in Python, C++, low-level systems, and creative engineering.
+    </p>
+</section>
 
-    <section class="card">
-        <h2>Projects</h2>
-        <p>More projects coming soon...</p>
-    </section>
+<section class="card">
+    <h2>Skills</h2>
+    <div class="skill">
+        <span>Python</span>
+        <div class="bar"><div style="width:90%"></div></div>
+    </div>
+    <div class="skill">
+        <span>C++</span>
+        <div class="bar"><div style="width:85%"></div></div>
+    </div>
+    <div class="skill">
+        <span>Java</span>
+        <div class="bar"><div style="width:70%"></div></div>
+    </div>
+</section>
 
-    <section class="card">
-        <h2>Connect</h2>
-        <div class="links">
-            <a href="https://github.com/nidashay" target="_blank">GitHub</a>
-            <a href="https://youtube.com/@dumb-nidashay" target="_blank">YouTube</a>
-            <a href="https://instagram.com/clint_be_me" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@clint_be_me" target="_blank">TikTok</a>
+<section class="card">
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="project">
+            <h3>Cluck & Dagger</h3>
+            <p>2D platformer game.</p>
         </div>
-    </section>
+        <div class="project">
+            <h3>pywget</h3>
+            <p>Custom wget in Python.</p>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <p>© 2026 Clinton Gethi</p>
-    </footer>
+<section class="card">
+    <h2>Connect</h2>
+    <div class="links">
+        <a href="https://github.com/nidashay" target="_blank">GitHub</a>
+        <a href="https://youtube.com/@dumb-nidashay" target="_blank">YouTube</a>
+        <a href="https://instagram.com/clint_be_me" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@clint_be_me" target="_blank">TikTok</a>
+    </div>
+</section>
 
-    <!-- JS -->
-    <script src="script.js"></script>
+<footer>
+    <p>© 2026 Clinton Gethi | GumBee Tech</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
