@@ -1,39 +1,44 @@
-const text = [
-    "Python Developer",
-    "C++ Programmer",
-    "Low-end PC Warrior",
-    "Building dumb-nidashay"
-];
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
 
-let index = 0;
-let charIndex = 0;
-let currentText = "";
-let isDeleting = false;
-const speed = 100;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function type() {
-    if (index >= text.length) index = 0;
+let particles = [];
 
-    if (!isDeleting) {
-        currentText = text[index].substring(0, charIndex++);
-    } else {
-        currentText = text[index].substring(0, charIndex--);
-    }
-
-    document.querySelector(".typing").textContent = currentText;
-
-    if (!isDeleting && charIndex === text[index].length) {
-        isDeleting = true;
-        setTimeout(type, 1000);
-        return;
-    }
-
-    if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        index++;
-    }
-
-    setTimeout(type, isDeleting ? speed / 2 : speed);
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speedY: Math.random() * 1 + 0.2
+    });
 }
 
-type();
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff9c";
+
+    particles.forEach(p => {
+        p.y += p.speedY;
+
+        if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
