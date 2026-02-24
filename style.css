@@ -1,106 +1,93 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Consolas, monospace;
 }
 
 body {
+    font-family: Consolas, monospace;
     background: #0d1117;
-    color: #c9d1d9;
+    color: #00ff9c;
+    overflow-x: hidden;
 }
 
+/* Background canvas */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Header */
 header {
-    background: #010409;
-    padding: 15px 30px;
-    border-bottom: 1px solid #30363d;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: #58a6ff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    color: #c9d1d9;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #58a6ff;
-}
-
-section {
-    padding: 60px 10%;
     text-align: center;
+    padding: 40px 20px;
 }
 
-.hero {
-    padding-top: 100px;
-}
-
-.hero h1 {
+.glow {
     font-size: 3rem;
+    text-shadow: 0 0 10px #00ff9c;
 }
 
-.typing {
-    color: #58a6ff;
-    margin-top: 10px;
-    height: 30px;
+.subtitle {
+    color: #8b949e;
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
+/* Cards */
 .card {
-    background: #161b22;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00ff9c;
+    margin: 20px auto;
     padding: 20px;
+    width: 90%;
+    max-width: 600px;
     border-radius: 10px;
-    border: 1px solid #30363d;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.1);
-    border-color: #58a6ff;
-    box-shadow: 0 0 15px #58a6ff33;
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #00ff9c;
 }
 
-.social-links a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    color: #c9d1d9;
+.card h2 {
+    margin-bottom: 10px;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+}
+
+ul li {
+    padding: 5px 0;
+}
+
+/* Links */
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.links a {
     text-decoration: none;
+    color: #0d1117;
+    background: #00ff9c;
+    padding: 8px 12px;
+    border-radius: 5px;
     transition: 0.3s;
 }
 
-.social-links a:hover {
-    background: #58a6ff;
-    color: black;
+.links a:hover {
+    background: #00c77a;
 }
 
+/* Footer */
 footer {
+    text-align: center;
     padding: 20px;
-    background: #010409;
-    border-top: 1px solid #30363d;
+    color: #8b949e;
 }
