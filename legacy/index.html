@@ -1,0 +1,419 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .port {
+    font-family: 'JetBrains Mono', monospace;
+    background: #0d0f14;
+    color: #c9d1d9;
+    min-height: 100vh;
+    padding: 0 0 4rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .hero-text {}
+
+  .badge {
+    display: inline-block;
+    background: #1f2a1a;
+    color: #56d364;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #2ea04326;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e6edf3;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name span { color: #58a6ff; }
+
+  .hero-sub {
+    font-size: 13px;
+    color: #8b949e;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .hero-sub em { color: #f0883e; font-style: normal; }
+
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .soc-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    text-decoration: none;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    background: #161b22;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+  .soc-btn:hover { border-color: #58a6ff; color: #58a6ff; }
+  .soc-btn i { font-size: 15px; }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #58a6ff44;
+  }
+
+  .avatar-ring2 {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid #58a6ff22;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #30363d;
+  }
+
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a0e1e;
+    color: #bc8cff;
+    border: 1px solid #6e40c922;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #bc8cff;
+  }
+
+  .section {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .sec-label {
+    font-size: 11px;
+    color: #58a6ff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #21262d;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #c9d1d9;
+    transition: border-color 0.2s;
+  }
+  .skill-chip:hover { border-color: #58a6ff55; }
+  .skill-chip i { font-size: 16px; color: #58a6ff; }
+  .skill-chip.re { border-left: 2px solid #f0883e; }
+  .skill-chip.re i { color: #f0883e; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .proj-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .proj-card:hover { border-color: #58a6ff55; }
+
+  .proj-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .proj-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #58a6ff;
+  }
+
+  .proj-icon.game { color: #56d364; }
+
+  .proj-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 4px;
+  }
+
+  .proj-desc {
+    font-size: 12px;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+
+  .proj-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-right: 4px;
+  }
+
+  .tag-c { background: #1a2744; color: #79c0ff; border: 1px solid #1f6feb22; }
+  .tag-py { background: #1a2a1a; color: #56d364; border: 1px solid #2ea04322; }
+  .tag-game { background: #1e1a2a; color: #bc8cff; border: 1px solid #6e40c922; }
+
+  .terminal-block {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #161b22;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .term-dot.r { background: #ff5f57; }
+  .term-dot.y { background: #febc2e; }
+  .term-dot.g { background: #28c840; }
+  .term-title { font-size: 11px; color: #8b949e; margin-left: 8px; }
+
+  .term-body { padding: 1rem 1.25rem; font-size: 12px; line-height: 1.8; }
+  .term-body .prompt { color: #56d364; }
+  .term-body .cmd { color: #c9d1d9; }
+  .term-body .out { color: #8b949e; }
+  .term-body .hi { color: #58a6ff; }
+  .term-body .warn { color: #f0883e; }
+  .term-body .str { color: #a5d6ff; }
+
+  .footer {
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #484f58;
+  }
+
+  .twitch-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #1e0a2a;
+    border: 1px solid #6e40c933;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: #bc8cff;
+    text-decoration: none;
+  }
+  .twitch-pill i { font-size: 15px; }
+</style>
+
+<div class="port">
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="badge">&#x25CF; available for projects</div>
+      <div class="hero-name">Clinton<br><span>Gethi</span></div>
+      <div class="hero-sub">
+        Self-taught dev from <em>Kenya</em> — specialising in low-level programming &amp; <em>reverse engineering</em>. Currently writing C (ex C++), building games &amp; tools.
+      </div>
+      <div class="social-row">
+        <a class="soc-btn" href="https://github.com/nidashay" target="_blank">
+          <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
+        </a>
+        <a class="soc-btn" href="https://youtube.com/@dumb_nidashay" target="_blank">
+          <i class="ti ti-brand-youtube" aria-hidden="true"></i> YouTube
+        </a>
+        <a class="soc-btn" href="https://instagram.com/clint_be_me" target="_blank">
+          <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram
+        </a>
+        <a class="soc-btn" href="https://tiktok.com/@clint_be_me" target="_blank">
+          <i class="ti ti-brand-tiktok" aria-hidden="true"></i> TikTok
+        </a>
+        <a class="soc-btn" href="https://app.hackthebox.com/profile/nidashay" target="_blank">
+          <i class="ti ti-shield" aria-hidden="true"></i> HTB
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-wrap">
+        <div class="avatar-ring2"></div>
+        <div class="avatar-ring"></div>
+        <img class="avatar" src="https://clintongethi.fun/clinton.jpg" alt="Clinton Gethi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:120px;height:120px;border-radius:50%;background:#161b22;border:2px solid #30363d;align-items:center;justify-content:center;font-size:2rem;color:#58a6ff;">CG</div>
+      </div>
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        streams daily on twitch
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><i class="ti ti-terminal-2" aria-hidden="true"></i> about.sh</div>
+    <div class="terminal-block">
+      <div class="term-bar">
+        <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+        <div class="term-title">clinton@gumbeetech ~ bash</div>
+      </div>
+      <div class="term-body">
+        <div><span class="prompt">$ </span><span class="cmd">whoami</span></div>
+        <div class="out">&#x2192; <span class="hi">clinton_gethi</span> — GumBee Tech</div>
+        <br>
+        <div><span class="prompt">$ </span><span class="cmd">cat interests.txt</span></div>
+        <div class="out">&#x2192; Low Level Programming, Reverse Engineering, Game Dev</div>
+        <br>
+        <div><span class="prompt">$ </span><span class="cmd">echo $LOCATION</span></div>
+        <div class="out">&#x2192; <span class="str">Embu, Kenya</span></div>
+        <br>
+        <div><span class="prompt">$ </span><span class="cmd">cat note.txt</span></div>
+        <div class="out warn">&#x2192; Don't be fooled by the web design, you're not being hacked 😅</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><i class="ti ti-code" aria-hidden="true"></i> skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip">
+        <i class="ti ti-letter-c" aria-hidden="true"></i> C / C++
+      </div>
+      <div class="skill-chip">
+        <i class="ti ti-brand-python" aria-hidden="true"></i> Python
+      </div>
+      <div class="skill-chip re">
+        <i class="ti ti-shield-search" aria-hidden="true"></i> Reverse Engineering
+      </div>
+      <div class="skill-chip">
+        <i class="ti ti-coffee" aria-hidden="true"></i> Java
+      </div>
+      <div class="skill-chip re">
+        <i class="ti ti-shield" aria-hidden="true"></i> HTB
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><i class="ti ti-folder-code" aria-hidden="true"></i> projects</div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon game"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i></div>
+        </div>
+        <div class="proj-title">HellShift</div>
+        <div class="proj-desc">A 2D platformer game built from the ground up. Dive into the chaos.</div>
+        <span class="proj-tag tag-c">C</span>
+        <span class="proj-tag tag-game">game dev</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-icon"><i class="ti ti-terminal" aria-hidden="true"></i></div>
+        </div>
+        <div class="proj-title">pywget</div>
+        <div class="proj-desc">A custom implementation of wget written in Python. CLI file downloader from scratch.</div>
+        <span class="proj-tag tag-py">Python</span>
+        <span class="proj-tag tag-c">CLI tool</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="border-bottom:none;">
+    <div class="sec-label"><i class="ti ti-brand-twitch" aria-hidden="true"></i> live on twitch</div>
+    <a class="twitch-pill" href="https://twitch.tv/dumb_nidashay" target="_blank">
+      <i class="ti ti-brand-twitch" aria-hidden="true"></i>
+      twitch.tv/dumb_nidashay — streaming daily
+    </a>
+  </div>
+
+  <div class="footer">
+    <span>© 2026 Clinton Gethi | GumBee Tech</span>
+    <span>built with ❤️ &amp; too many hours of debugging</span>
+  </div>
+
+</div>
