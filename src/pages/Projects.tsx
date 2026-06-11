@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const repoPicks = ['Batch2Bash', 'Popflix', 'Skies-Mobile', 'Skies', 'Hellshift', 'gumbee_bot', 'vcsp'];
+  const repoPicks = ['Batch2Bash', 'Popflix', 'Skies-Mobile', 'Skies', 'Hellshift', 'gumbee_bot', 'vcsp', 'hianime-cli'];
 
   useEffect(() => {
     const fetchRepos = async () => {
